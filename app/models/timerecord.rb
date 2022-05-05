@@ -1,0 +1,2 @@
+class Timerecord < ApplicationRecord
+end
