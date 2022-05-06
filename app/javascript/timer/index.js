@@ -21,8 +21,8 @@ window.addEventListener('load', function(){
   reset.style.display ="none";
 
 
-  start.addEventListener('click',count_start, false);
-  function count_start(){
+  start.addEventListener("click",(count_start)=> {
+    count_start.preventDefault();
     start.style.display ="none";
     if(start.style.display=="block"){
       stop.style.display ="none";
@@ -34,10 +34,13 @@ window.addEventListener('load', function(){
     set_id =setInterval(count_down,count);
     function count_down(){
       if(timer <= 0 ){
-        sound.play();
-        sound.volume = 1;
         clearInterval(set_id);
+        document.getElementById("time-form").submit();
       }else{
+        if(timer ==1 ){
+           sound.play();
+        sound.volume = 1;
+        }
         timer--;
         counter++;
       }
@@ -53,12 +56,16 @@ window.addEventListener('load', function(){
         $('.ppc-percents span').html(min +":" + ("0"+sec).slice(-2));
       });
     }
-  }
+  });
 
   stop.addEventListener("click",count_stop, false);
   function count_stop(){
     clearInterval(set_id);
-    start.disabled = false;
+    if(start.style.display=="block"){
+      stop.style.display ="none";
+    }else{
+      stop.style.display ="block";
+    }
   }
 
   reset.addEventListener("click",count_reset,false);
