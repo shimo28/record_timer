@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2022_05_05_015230) do
 
   create_table "timerecords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "time_record", null: false
+    t.integer "day_record", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

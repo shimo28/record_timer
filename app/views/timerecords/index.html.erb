@@ -20,6 +20,7 @@
     </div>
     <%= form_with  model: @timerecord, url: timerecords_path, id: 'time-form', class: 'button',local: true do |f| %>
       <%= f.text_field :time_record, value:1 %>
+      <%= f.text_field :day_record, value:Time.now.day %>
       <%= f.submit "スタート", id: "start" %>
       <button id="stop">ストップ</button>
       <button id="reset">リセット</button>

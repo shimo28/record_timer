@@ -3,21 +3,14 @@ class TimerecordsController < ApplicationController
     @timerecord = Timerecord.new
   end
   def create
-    @timerecord = Timerecord.all
-    if @timerecord.present?
-    #binding.pry
-      if @timerecord.create_at != Time.now
-        #binding.pry
-        @timerecord = Timerecord.new(timerecord_params)
-        @timerecord.save
-        redirect_to root_path
-      elsif 
-        redirect_to action: :update
-      end
-    else
+    @timerecord = Timerecord.select(:day_record)
+    if @timerecord != Time.now.day
+      binding.pry
       @timerecord = Timerecord.new(timerecord_params)
       @timerecord.save
       redirect_to root_path
+    else
+      redirect_to action: :update
     end
   end
   def update
@@ -28,6 +21,6 @@ class TimerecordsController < ApplicationController
 
   private
   def timerecord_params
-    params.require(:timerecord).permit(:time_record)
+    params.require(:timerecord).permit(:time_record, :day_record)
   end
 end
