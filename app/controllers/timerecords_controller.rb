@@ -5,7 +5,7 @@ class TimerecordsController < ApplicationController
   def create
     @timerecord = Timerecord.select(:day_record)
     if @timerecord != Time.now.day
-      binding.pry
+      #binding.pry
       @timerecord = Timerecord.new(timerecord_params)
       @timerecord.save
       redirect_to root_path
