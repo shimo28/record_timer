@@ -7,26 +7,25 @@
   <title>Timer</title>
 </head>
 <body>
-  <header>
-    <div class="progress-pie-chart">
-      <div class="ppc-progress">
-        <div class="ppc-progress-fill"></div>
-      </div>
-      <div class="ppc-percents">
-        <div class="pcc-percents-wrapper">
-          <span>time</span>
-        </div>
+  <%= render "shared/header" %>
+  <div class="progress-pie-chart">
+    <div class="ppc-progress">
+      <div class="ppc-progress-fill"></div>
+    </div>
+    <div class="ppc-percents">
+      <div class="pcc-percents-wrapper">
+        <span>time</span>
       </div>
     </div>
-    <%= form_with  model: @timerecord, url: timerecords_path, id: 'time-form', class: 'button',local: true do |f| %>
-      <%= f.text_field :time_record, value:1 %>
-      <%= f.text_field :day_record, value:Time.now.day %>
-      <%= f.submit "スタート", id: "start" %>
-      <button id="stop">ストップ</button>
-      <button id="reset">リセット</button>
-      <audio id="sound" src="/assets/Onoma-Inspiration11-3(High)-86974574321677e19db267859c885855381cffaba6a8cb16308af7d3dab87878.mp3"></audio>
-    <% end %>
-  </header>
+  </div>
+  <%= form_with  model: @timerecord, url: timerecords_path, id: 'time-form', class: 'button',local: true do |f| %>
+  <div class='f'>
+    <%= f.text_field :time_record, value:1 %>
+    <%= f.text_field :day_record, value:Time.now.day %>
+  </div>
+  <%= f.submit "スタート",class:"s_button", id: "start" %>
+  <audio id="sound" src="/assets/Onoma-Inspiration11-3(High)-86974574321677e19db267859c885855381cffaba6a8cb16308af7d3dab87878.mp3"></audio>
+  <% end %>
   <footer>
   </footer>
 </body>
