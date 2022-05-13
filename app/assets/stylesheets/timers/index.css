@@ -67,6 +67,7 @@
 .pcc-percents-wrapper {
   display: table-cell;
   vertical-align: middle;
+  font-family:serif;
 }
 
 body {
@@ -80,7 +81,7 @@ body {
   justify-content: center;
 }
 
-.f {
+.f_new {
   display: none;
 }
 

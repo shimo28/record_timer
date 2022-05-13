@@ -14,18 +14,38 @@
     </div>
     <div class="ppc-percents">
       <div class="pcc-percents-wrapper">
-        <span>time</span>
+        <span>25:00</span>
       </div>
     </div>
   </div>
-  <%= form_with  model: @timerecord, url: timerecords_path, id: 'time-form', class: 'button',local: true do |f| %>
-  <div class='f'>
-    <%= f.text_field :time_record, value:1 %>
-    <%= f.text_field :day_record, value:Time.now.day %>
-  </div>
-  <%= f.submit "スタート",class:"s_button", id: "start" %>
-  <audio id="sound" src="/assets/Onoma-Inspiration11-3(High)-86974574321677e19db267859c885855381cffaba6a8cb16308af7d3dab87878.mp3"></audio>
+  <%if @timerecord.present?%>
+    <%if @past_days >= 1%>
+      <%= form_with  model: @timerecord, url: timerecords_path, id: 'time-form', class: 'button',local: true do |f| %>
+      <div class='f_new'>
+        <%= f.text_field :time_record, value:1 %>
+        <%= f.text_field :day_record, value:Time.now.day %>
+      </div>
+      <%= f.submit "スタート",class:"s_button", id: "start" %>
+    <% end %>
+    <% else %>
+      <%= form_with  model: @timerecord, url: timerecords_path, id: 'time-form', class: 'button',local: true do |f| %>
+      <div class='f_new'>
+        <%= f.text_field :time_record, value:@time.time_record + 1 %>
+        <%= f.text_field :day_record, value:Time.now.day %>
+      </div>
+      <%= f.submit "スタート",class:"s_button", id: "start" %>
+    <% end %>
+    <% end %>
+  <% else %>
+    <%= form_with  model: @timerecord, url: timerecords_path, id: 'time-form', class: 'button',local: true do |f| %>
+    <div class='f_new'>
+      <%= f.text_field :time_record, value:1 %>
+      <%= f.text_field :day_record, value:Time.now.day %>
+    </div>
+    <%= f.submit "スタート",class:"s_button", id: "start" %>
   <% end %>
+  <% end %>
+  <audio id="sound" src="/assets/Onoma-Inspiration11-3(High)-86974574321677e19db267859c885855381cffaba6a8cb16308af7d3dab87878.mp3"></audio>
   <footer>
   </footer>
 </body>

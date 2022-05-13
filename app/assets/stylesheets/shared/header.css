@@ -4,18 +4,19 @@
 
 .top-page-header {
   width: 100vw;
-  padding: 2vh 15vw;
+  padding: 2vh 12vw;
   display: flex;
   flex-direction: column;
 }
 
 .nav {
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
-  padding: 1vh 0;
+  padding: 1vh none;
+  font-family: cursive;
 }
 
 .lists-left {
